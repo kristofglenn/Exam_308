@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            transition: filter 0.5s ease-in-out; /* Add transition for smooth blur effect */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007BFF;
+            text-align: center;
+        }
+
+        .event-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .box {
+            width: 45%;
+            min-height: 100px;
+            background-color: #007BFF;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .box:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .animate {
+            animation-name: exampleAnimation;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        @keyframes exampleAnimation {
+            0% { background-color: #007BFF; }
+            50% { background-color: #0056b3; }
+            100% { background-color: #007BFF; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Event Showcase</h1>
+
+        <div class="event-box">
+        
+            <div class="box" id="clickBox" onclick="handleEvent('Click')">Click Me</div>
+
+            <input type="text" id="blurInput" placeholder="Blur Example">
+            <button onclick="blurScreen()">Blur</button>
+
+            <input type="text" id="changeInput" onchange="handleEvent('Change')" placeholder="Change Example">
+
+            <div class="box" id="dblClickBox" ondblclick="handleEvent('Double Click')">Double Click Me</div>
+
+            <input type="text" id="focusInput" onfocusin="handleEvent('Focus In')" onfocusout="handleEvent('Focus Out')" placeholder="Focus Example">
+
+            <div class="box" id="mouseOverBox" onmouseover="handleEvent('Mouse Over')">Mouse Over Me</div>
+
+            <div class="box" id="resizeBox" onresize="handleEvent('Resize')">Resize Me</div>
+
+            <div class="box animate" id="animationBox" onanimationstart="handleEvent('Animation Start')" onanimationend="handleEvent('Animation End')">Animation</div>
+        </div>
+    </div>
+
+    <script>
+        function handleEvent(eventName) {
+            alert(`Event: ${eventName}`);
+        }
+
+        function blurScreen() {
+            const bodyElement = document.body;
+            bodyElement.style.filter = 'blur(5px)';
+        }
+    </script>
+</body>
+</html>
